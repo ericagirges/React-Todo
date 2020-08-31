@@ -10,33 +10,34 @@ class App extends React.Component {
   constructor() {
     super();
     this.state = {
-      thingsTodo: []
+      thingsTodo: [],
+      toggleCompleted: () => {},
     }
   };
 
-  // addItem to TodoList 
-  addItem = (itemName) => {
-    const newItem = {
-      name: itemName,
+  // addTask to TodoList 
+  addTask = (taskName) => {
+    const newTask = {
+      name: taskName,
       id: new Date(),
       completed: false
     };
     this.setState({
-      thingsTodo: [...this.state.thingsTodo, newItem]
+      thingsTodo: [...this.state.thingsTodo, newTask]
     })
   };
 
-  // set item to completed true/flase
-  toggleCompleted = (selectedItem) => {
+  // set task to completed true/flase
+  toggleCompleted = (selectedTask) => {
     this.setState({
-      thingsTodo: this.state.thingsTodo.map((item) => {
-        if (item.id === selectedItem) {
+      thingsTodo: this.state.thingsTodo.map((task) => {
+        if (task.id === selectedTask) {
           return {
-            ...item,
-            completed: !item.completed
+            ...task,
+            completed: !task.completed
           };
         }else {
-          return item;
+          return task;
         }
       })
     })
@@ -47,7 +48,7 @@ class App extends React.Component {
       <div>
         <header>
         <h2>Welcome to your Todo App!</h2>
-        <TodoForm addItem={this.addItem} />
+        <TodoForm addTask={this.addTask} />
         </header>
         <TodoList thingsTodo={this.state.thingsTodo} toggleCompleted={this.toggleCompleted}/>
       </div>

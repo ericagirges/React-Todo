@@ -5,12 +5,18 @@ import Todo from "./Todo";
 
 const TodoList = (props) => {
 
-    return (
-        <div>
-            <Todo />
-            <button>Clear Completed Tasks</button>
-        </div>
-    )
-}
+  return (
+    <div>
+      {props.thingsTodo.map((task) => (
+        <Todo
+          key={task.id}
+          task={task}
+          toggleCompleted={props.toggleCompleted}
+        />
+      ))}
+      <button>Clear Completed Tasks</button>
+    </div>
+  );
+};
 
 export default TodoList;
