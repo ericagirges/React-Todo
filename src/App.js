@@ -1,6 +1,28 @@
 import React from "react";
 import TodoForm from "./components/TodoForm";
 import TodoList from "./components/TodoList";
+import styled from "styled-components";
+
+const StyledHeader = styled.header `
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  margin-top: 50px;
+  border-bottom: 2px solid black;
+`
+
+const LogoImage = styled.img `
+  width: 100px;
+  height: auto;
+`
+
+const Title = styled.h2 `
+  font-family: "Unica One";
+  font-size: 3.0em;
+  margin-bottom: 40px;
+`
+
+
 
 
 class App extends React.Component {
@@ -46,10 +68,11 @@ class App extends React.Component {
   render() {
     return (
       <div>
-        <header>
-        <h2>Welcome to your Todo App!</h2>
+        <StyledHeader>
+        <LogoImage src="/froglogo.png" alt="mint green frog logo" />
+        <Title>Hop Todo It</Title>
         <TodoForm addTask={this.addTask} />
-        </header>
+        </StyledHeader>
         <TodoList thingsTodo={this.state.thingsTodo} toggleCompleted={this.toggleCompleted}/>
       </div>
     );
