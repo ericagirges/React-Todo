@@ -11,15 +11,17 @@ const TasksContainer = styled.div `
 `
 
 const ClearButton = styled.button `
-    font-family: "Raleway";
+    font-family: "Raleway", sans-serif;
     background: none;
     border: none;
     font-weight: 700;
     font-size: 1.4em;
     margin-top: 30px;
+    margin-bottom: 50px;
+
 
     :hover {
-        color: #68487F; 
+        color: #569f5a; 
     }
 
 `
@@ -35,7 +37,7 @@ const TodoList = (props) => {
           toggleCompleted={props.toggleCompleted}
         />
       ))}
-      <ClearButton>Clear Completed Tasks</ClearButton>
+      <ClearButton onClick={props.clearCompletedTasks}>Clear Completed Tasks</ClearButton>
     </TasksContainer>
   );
 };

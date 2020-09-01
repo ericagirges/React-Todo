@@ -6,6 +6,12 @@ const StyledTask = styled.div `
     font-size: 1.3em;
     margin-top: 20px;
     cursor: pointer;
+    box-shadow: 0.25rem 0.25rem 0.6rem rgba(0,0,0,0.05), 0 0.5rem 1.125rem rgba(75,0,0,0.05);
+    background: white;
+    border-radius: 5px;
+    padding: 10px 30px;
+    max-width: 350px;
+    text-align: center;
 
     :hover {
         color: #68487F;

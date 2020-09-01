@@ -3,27 +3,44 @@ import TodoForm from "./components/TodoForm";
 import TodoList from "./components/TodoList";
 import styled from "styled-components";
 
-const StyledHeader = styled.header `
+const StyledHeader = styled.header`
   display: flex;
   flex-direction: column;
   align-items: center;
   margin-top: 50px;
   border-bottom: 2px solid black;
-`
+`;
 
-const LogoImage = styled.img `
+const LogoImage = styled.img`
   width: 100px;
   height: auto;
-`
+`;
 
-const Title = styled.h2 `
+const Title = styled.h2`
   font-family: "Unica One";
-  font-size: 3.0em;
+  font-size: 3em;
   margin-bottom: 40px;
+`;
+
+const FlexFooter = styled.footer `
+  display: flex;
+  justify-content: space-between;
 `
 
+const BackgroundLeft = styled.img `
+  height: 300px;
+  width: auto;
+  position: fixed;
+  bottom: 0;
+`
 
-
+const BackgroundRight = styled.img `
+  height: 300px;
+  width: auto;
+  position: fixed;
+  bottom: 0;
+  right: 0;
+`
 
 class App extends React.Component {
   // you will need a place to store your state in this component.
@@ -34,19 +51,19 @@ class App extends React.Component {
     this.state = {
       thingsTodo: [],
       toggleCompleted: () => {},
-    }
-  };
+    };
+  }
 
-  // addTask to TodoList 
+  // addTask to TodoList
   addTask = (taskName) => {
     const newTask = {
       name: taskName,
       id: new Date(),
-      completed: false
+      completed: false,
     };
     this.setState({
-      thingsTodo: [...this.state.thingsTodo, newTask]
-    })
+      thingsTodo: [...this.state.thingsTodo, newTask],
+    });
   };
 
   // set task to completed true/flase
@@ -56,24 +73,38 @@ class App extends React.Component {
         if (task.id === selectedTask) {
           return {
             ...task,
-            completed: !task.completed
+            completed: !task.completed,
           };
-        }else {
+        } else {
           return task;
         }
-      })
-    })
-  }
+      }),
+    });
+  };
+
+  clearCompletedTasks = () => {
+    this.setState({
+      thingsTodo: this.state.thingsTodo.filter((task) => !task.completed),
+    });
+  };
 
   render() {
     return (
       <div>
         <StyledHeader>
-        <LogoImage src="/froglogo.png" alt="mint green frog logo" />
-        <Title>Hop Todo It</Title>
-        <TodoForm addTask={this.addTask} />
+          <LogoImage src="/froglogo.png" alt="mint green frog logo" />
+          <Title>Hop Todo It</Title>
+          <TodoForm addTask={this.addTask} />
         </StyledHeader>
-        <TodoList thingsTodo={this.state.thingsTodo} toggleCompleted={this.toggleCompleted}/>
+        <TodoList
+          thingsTodo={this.state.thingsTodo}
+          toggleCompleted={this.toggleCompleted}
+          clearCompletedTasks={this.clearCompletedTasks}
+        />
+        <FlexFooter>
+          <BackgroundLeft src="/lilypad-left.png" alt="lily pad with pink lotus flower"/>
+          <BackgroundRight src="/lilypad-right.png" alt="lily pad with pink lotus flower"/>
+        </FlexFooter>
       </div>
     );
   }
