@@ -32,6 +32,15 @@ const BackgroundLeft = styled.img `
   width: auto;
   position: fixed;
   bottom: 0;
+  display: block;
+
+  @media(max-width: 600px){
+    height: 100px;
+    width: auto;
+  }
+  @media(max-width: 400px){
+    display: none;
+  }
 `
 
 const BackgroundRight = styled.img `
@@ -40,6 +49,17 @@ const BackgroundRight = styled.img `
   position: fixed;
   bottom: 0;
   right: 0;
+  display: block;
+
+  @media(max-width: 600px){
+    height: 100px;
+    width: auto;
+  }
+  @media(max-width: 400px){
+    display: none;
+  }
+
+
 `
 
 class App extends React.Component {
